@@ -1,0 +1,26 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <div class="landing-wrapper">
+        <div class="landing-header">
+            <div class="landing-header-content clearfix">
+                <h:link outcome="/index" ><p:graphicImage name="images/logo.png" library="ksaman" height="40" /></h:link>
+
+                <a id="menu-button" href="#">
+                    <span class="fa fa-bars"></span>
+                </a>
+                <ul id="menu">
+                    <li> <h:link outcome="/browse/MahabharatParvaView" value="মহাভারত"></h:link></li>
+                    <li> <h:link outcome="/browse/MahabharatWordspaadSuchiView" value="শব্দ সূচী"></h:link></li>
+                    <li> <h:link outcome="/browse/MahabharatShlokapaadSuchiView" value="শ্লোকপাদ সূচী"></h:link></li>
+                    <li> <h:link outcome="/Login" value="Login"></h:link></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

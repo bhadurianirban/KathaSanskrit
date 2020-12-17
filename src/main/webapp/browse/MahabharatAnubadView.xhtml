@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/browse-template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{translatedTextTabView.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{translatedTextTabView.adhyayId}"></f:viewParam>
+            <f:viewParam name="shlokaNum" value="#{translatedTextTabView.shlokaNum}"></f:viewParam>
+            <f:viewAction action="#{translatedTextTabView.loadTranslatedText()}"/>
+        </f:metadata>
+        <div class="pageBanner">অনুবাদ এবং টীকা</div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <h:form id="form">
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.parvaName}" />
+                                <h:outputText value=" পর্ব " />
+                                <h:outputText value=" অধ্যায় " />
+                                <h:outputText value="#{translatedTextTabView.adhyayId}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.ubachaName}" />
+                                <h:outputText value="  " />
+                                <h:outputText value="#{translatedTextTabView.ubachaBachan}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-6">
+                            <p:dataTable var="shloka" value="#{translatedTextTabView.translationDTOList}">
+                                <p:column width="15%" headerText="সংখ্যা">
+                                    <h:outputText value="#{shloka.getShlokaNum()}" />
+                                    <h:outputText value="," />
+                                    <h:outputText value="#{shloka.getShlokaLine()}" />
+                                </p:column>
+                                <p:column headerText="শ্লোক">
+                                    <h:outputText value="#{shloka.getShlokaText()}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-nopad card">
+                        <p:button value="Back" outcome="MahabharatShlokaView" title="পূর্ববর্তী পাতা" styleClass="back-button" />
+                    </div>
+                </h:form>
+            </div>
+            <!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
+                            Action Menu List goes here.
+                        </div>-->
+        </div>
+    </ui:define>
+
+</ui:composition>

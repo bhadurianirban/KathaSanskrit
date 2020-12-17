@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/browse-template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{shlokaListTabView.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{shlokaListTabView.adhyayId}"></f:viewParam>
+            <f:viewAction action="#{shlokaListTabView.loadAllShlokaList()}"/>
+        </f:metadata>
+        <div class="pageBanner">শ্লোক সমগ্র</div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+
+                <div class="ui-g-nopad card">
+                    <p:button value="Back" outcome="MahabharatAdhyayView" title="পূর্ববর্তী পাতা" styleClass="back-button" />
+                </div>
+                <h:form id="form"> 
+                    <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}" reflow="true">
+                        <p:column width="20%" headerText="উবাচঃ">
+                            <h:outputText value="#{shloka.getUbachaName()}" />
+                            <h:outputText value=" " />
+                            <h:outputText value="#{shloka.getUbachaBachan()}" />
+                        </p:column>
+
+                        <p:column width="50%" headerText="শ্লোক"> 
+                            <h:outputText value="#{shloka.getShlokaText()}" />
+                        </p:column>
+
+                        <p:column width="10%" headerText="সংখ্যা">
+                            <h:outputText value="#{shloka.getShlokaNum()}" />
+                            <h:outputText value="," />
+                            <h:outputText value="#{shloka.getShlokaLine()}" />
+                        </p:column>
+                        <p:column>
+                            <div class="btnBox">
+                                <p:commandButton icon="fa fa-eye" class="showBtn" action="#{shlokaListTabView.viewTranslationBtn()}" title="অনুবাদ এবং টীকা সমূহ">
+                                    <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
+                                </p:commandButton>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,275 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23 Apr, 2019, 3:12:18 PM
+    Author     : dgrfiv
+*/
+
+
+html,body {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.wrapper .no-margin {
+    margin-left: 0px;
+}
+
+.pageBanner {
+    font-size: 56px;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btnBox {
+    text-align: center;
+    padding: 10px 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .btnBox {
+      display: inline-block;
+      padding: 0;
+      margin: 10px;
+    }
+}
+
+.showBtn {
+    border-radius: 50%;
+}
+/*.showBtn:hover {
+    background-color: #004080;
+}*/
+/*
+.viewBtn {
+    float: right;
+    background-color: #004080;
+}*/
+
+.cmdLink {
+    background-color: #006de5;
+    display: block;
+    text-align: center;
+    padding: 30px 15px;
+    border-radius: 8px;
+    -webkit-transition: 0.5s ease-in;
+    -moz-transition: 0.5s ease-in;
+    -o-transition: 0.5s ease-in;
+    transition: 0.5s ease-in; 
+}
+
+.cmdLink:hover {
+    background-color: #004080;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+.cmdLink:focus {
+    background-color: #087298;
+}
+
+.cmdLink .linkColor {
+    color: white;
+    font-size: 20pt;
+}
+
+.listTab {
+}
+
+.ui-datatable {
+    text-align: center;
+}
+
+.ui-datatable thead th {
+    color: #221F4B;
+}
+
+.ui-datatable tbody tr {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: #DFDFDF;
+    color: #221F4B;
+    font-size: 14pt;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear; 
+}
+
+.ui-datatable tbody tr:hover {
+    background-color: #004080;
+    color: #FFFFFF;
+    height: 120%;
+}
+
+.ui-datatable th.ui-state-default {
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+.anubadBox {
+    background-color: #004080;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+
+/*.landing-wrapper #introduction {
+
+    background-image: url("#{resource['dgrf:images/dgrfhome.jpg']}");
+}*/
+
+
+.intro-container {
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    position: relative; 
+}
+
+.intro-container img.responsive-img {
+    width: 100%;
+    height: 550px;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.intro-container .intro-button {
+    padding-left: 10%;
+}
+.intro-container .ui-button {
+
+    position: absolute;
+    top: 55%;
+}
+.intro-container .ui-button .ui-button-text {
+    padding: 1em 5em; 
+}
+
+@media (max-width: 64em) {
+    .intro-container {
+        width: 100%;
+        margin: 0 auto;
+
+    }
+    /*    .intro-container .intro-title {
+            font-size: 28px;
+            position: absolute;
+            display: block;
+        }
+        .intro-container .intro-caption {
+            padding-bottom: 30px;
+            font-size: 20px;
+            position: absolute;
+            display: block;
+        }*/
+
+    .intro-container img.responsive-img {
+        width: 100%;
+        height: 450px;
+        background-position: center;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+    }
+    /*    .intro-container .ui-button {
+            display: block;
+            position: absolute;
+            padding-top: 10px;
+            width: 250px;
+            height: 30px;
+            margin: 0 auto;
+        }*/
+
+}
+
+/*.intro-button .button {
+    background-color: #087298;
+    border: none;
+}*/
+
+.content-text {
+    padding: 30px 50px;
+    color: #FFFFFF;
+}
+
+.content-text .content-header {
+    font-size: 56px;
+}
+
+.content-text .content-author {
+    font-size: 24px;
+}
+
+
+blockquote {
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+
+@media (max-width: 400px) {
+
+    .intro-container img.responsive-img {
+        width: 100%;
+        height: 300px;
+        background-position: center;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+    }
+
+    .content-text {
+        padding: 10px;
+        margin: 0;
+        font-size: 12px;
+        display: block;
+    }
+
+    .content-text .content-header {
+        font-size: 32px;
+    }
+
+    .content-text .content-author {
+        font-size: 18px;
+    }
+
+    blockquote {
+        border-left: 6px solid #ccc;
+    }
+}
+
+.landing-footer .landing-footer-content .footer-bottom {
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+
+.wrapper .footer {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+}

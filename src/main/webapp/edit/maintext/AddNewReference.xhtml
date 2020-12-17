@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{addNewReference.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{addNewReference.adhyayId}"></f:viewParam>
+            <f:viewParam name="shlokaNum" value="#{addNewReference.shlokaNum}"></f:viewParam>
+            <f:viewParam name="shlokaLine" value="#{addNewReference.shlokaLine}"></f:viewParam>
+            <f:viewAction action="#{addNewShloka.fillValues()}" />
+        </f:metadata>
+
+        <h:form>
+            <br />
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000"/>
+            <p:panelGrid style="margin-bottom:10px; font-size: 1.5rem; width: 50rem;"  columns="2" layout="grid" >
+
+                <h:outputLabel value="Reference No:" />
+                <p:inputText value="#{addNewReference.refTextId}" required="true" />
+                
+                <h:outputText value="Reference Text:" />
+                <p:inputText value="#{addNewReference.refText}" required="true" />
+
+            </p:panelGrid>
+
+            <div class="card">
+                <p:commandButton value="Save" action="#{addNewReference.addNewReference()}" update="@form"></p:commandButton>
+                <p:commandButton value="Back" action="#{addNewReference.previousPage()}"></p:commandButton>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

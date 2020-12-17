@@ -1,0 +1,431 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <name>primefaces_omega</name>
+    
+    <component>
+        <component-type>org.primefaces.component.OmegaMenu</component-type>
+        <component-class>org.primefaces.omega.component.menu.OmegaMenu</component-class>
+    </component>
+    
+    <render-kit>
+        <renderer>
+            <component-family>org.primefaces.component</component-family>
+            <renderer-type>org.primefaces.component.OmegaMenuRenderer</renderer-type>
+            <renderer-class>org.primefaces.omega.component.menu.OmegaMenuRenderer</renderer-class>
+        </renderer>
+    </render-kit>
+    
+    
+    
+    <navigation-rule>
+        <from-view-id>/Login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginController.moveToDefaultHost}</from-action>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginController.moveToDefaultHost}</from-action>
+            <from-outcome>access</from-outcome>
+            <to-view-id>/access.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Landing</from-outcome>
+            <to-view-id>/edit/Landing.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for Parva List to Adhyay List browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatParvaView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>AdhyayListView</from-outcome>
+            <to-view-id>/browse/MahabharatAdhyayView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{parvaListTabView.parvaId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/ParvaListTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>AdhyayListView</from-outcome>
+            <to-view-id>/edit/maintext/AdhyayListTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{parvaListTabView.parvaId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for Adhyay List to Shloka List browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatAdhyayView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ShlokaListView</from-outcome>
+            <to-view-id>/browse/MahabharatShlokaView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{adhyayListTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{adhyayListTabView.adhyayId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/AdhyayListTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ShlokaListView</from-outcome>
+            <to-view-id>/edit/maintext/ShlokaListTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{adhyayListTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{adhyayListTabView.adhyayId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for Shloka List to Shloka Anubad browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/browse/MahabharatAnubadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{shlokaListTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{shlokaListTabView.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/browse/MahabharatAnubadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListByPaad.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{shlokaListByPaad.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{shlokaListByPaad.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordsListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/browse/MahabharatAnubadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{wordsListByPaad.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{wordsListByPaad.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{wordsListByPaad.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/ShlokaListTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/edit/maintext/TranslatedTextTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{shlokaListTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{shlokaListTabView.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for Shlokapaad List to ShlokaListByPaad browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokapaadSuchiView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ShlokaListByPaad</from-outcome>
+            <to-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>firstChar</name>
+                    <value>#{shlokapaadSuchiList.firstChar}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for ShlokaListByPaad to  Shlokapaad List browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatShlokapaadView</from-outcome>
+            <to-view-id>/browse/MahabharatShlokapaadSuchiView.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for Shloka Anubad to Shloka List browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatAnubadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatShlokaView</from-outcome>
+            <to-view-id>/browse/MahabharatShlokaView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{translatedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{translatedTextTabView.adhyayId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/TranslatedTextTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ShlokaListTabView</from-outcome>
+            <to-view-id>/edit/maintext/ShlokaListTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{translatedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{translatedTextTabView.adhyayId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for Shloka List to Adhyay List browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatAdhyayView</from-outcome>
+            <to-view-id>/browse/MahabharatAdhyayView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListTabView.parvaId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/ShlokaListTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>AdhyayListTabView</from-outcome>
+            <to-view-id>/edit/maintext/AdhyayListTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListTabView.parvaId}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for Adhyay List to Parva List browse and edit to different pages same outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatAdhyayView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatParvaView</from-outcome>
+            <to-view-id>/browse/MahabharatParvaView.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/edit/maintext/AdhyayListTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ParvaListTabView</from-outcome>
+            <to-view-id>/edit/maintext/ParvaListTabView.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
+    <!--    Navigation cases for Wordspaad List to WordsListByPaad browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordspaadSuchiView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>WordsListByPaad</from-outcome>
+            <to-view-id>/browse/MahabharatWordsListByPaadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>firstChar</name>
+                    <value>#{wordspaadSuchiList.firstChar}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for WordsListByPaad to Wordspaad List browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordsListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatWordspaadView</from-outcome>
+            <to-view-id>/browse/MahabharatWordspaadSuchiView.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for TranslatedTextView to addReferenceView outcome-->
+    <navigation-rule>
+        <from-view-id>/edit/maintext/TranslatedTextTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ReferencedTextView</from-outcome>
+            <to-view-id>/edit/maintext/ReferencedTextTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{translatedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{translatedTextTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{translatedTextTabView.shlokaNum}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaLine</name>
+                    <value>#{translatedTextTabView.shlokaLine}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--    Navigation cases (Back Button) for ReferencedText to TranslatedText browse and edit to different pages same outcome-->
+    
+    <navigation-rule>
+        <from-view-id>/edit/maintext/ReferencedTextTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextTabView</from-outcome>
+            <to-view-id>/edit/maintext/TranslatedTextTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{referencedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{referencedTextTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{referencedTextTabView.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for ReferencedTextView to AddNewReference outcome-->
+    <navigation-rule>
+        <from-view-id>/edit/maintext/ReferencedTextTabView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>AddReferenceView</from-outcome>
+            <to-view-id>/edit/maintext/AddNewReference.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{referencedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{referencedTextTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{referencedTextTabView.shlokaNum}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaLine</name>
+                    <value>#{referencedTextTabView.shlokaLine}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--    Navigation cases (Back Button) for AddNewReference to ReferencedTextTabView browse and edit to different pages same outcome-->
+    
+    <navigation-rule>
+        <from-view-id>/edit/maintext/AddNewReference.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextTabView</from-outcome>
+            <to-view-id>/edit/maintext/ReferencedTextTabView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{referencedTextTabView.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{referencedTextTabView.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{referencedTextTabView.shlokaNum}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaLine</name>
+                    <value>#{referencedTextTabView.shlokaLine}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

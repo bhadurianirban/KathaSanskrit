@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/browse-template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="#{shlokapaadSuchiList.loadAllShlokapaadList()}"/>
+        </f:metadata>
+        <div class="pageBanner">শ্লোকের প্রথম পদ সমগ্র</div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+
+                <div class="ui-g-nopad card">
+                    <p:button value="Back" outcome="/index" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
+                </div>
+                <h:form id="form">
+                    <p:dataGrid var="shlokapaad" value="#{shlokapaadSuchiList.shlokapaadDTOList}" columns="4" layout="grid">
+
+                        <p:commandLink action="#{shlokapaadSuchiList.shlokaListView()}" title="অন্তর্গত শ্লোক সমূহ" styleClass="cmdLink">
+                            <h:outputText value="#{shlokapaad.getFirstChar()}" class="linkColor" />
+                            <f:setPropertyActionListener value="#{shlokapaad}" target="#{shlokapaadSuchiList.selectedShlokapaad}" />
+                        </p:commandLink>
+
+                    </p:dataGrid>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

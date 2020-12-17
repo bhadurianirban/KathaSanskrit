@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{editExsistingShloka.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{editExsistingShloka.adhyayId}"></f:viewParam>
+            <f:viewParam name="shlokaNum" value="#{editExsistingShloka.shlokaNum}"></f:viewParam>
+            <f:viewParam name="shlokaLine" value="#{editExsistingShloka.shlokaLine}"></f:viewParam>
+            <f:viewAction action="#{editExsistingShloka.fillValues()}" />
+        </f:metadata>
+
+        <h:form enctype="multipart/form-data">
+            <br />
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            <p:panelGrid style="margin-bottom:10px; font-size: 1.5rem; width: 50rem;"  columns="2" layout="grid" >
+
+                <h:outputLabel value="Parva Id:" />
+                <p:inputText value="#{editExsistingShloka.parvaId}" disabled="true" required="true" />
+
+                <h:outputLabel value="Adhyay Id:" />
+                <p:inputText value="#{editExsistingShloka.adhyayId}" disabled="true" required="true" />
+
+                <h:outputLabel value="Shloka Number:" />
+                <p:inputText value="#{editExsistingShloka.shlokaNum}" required="true" />
+
+                <h:outputLabel value="Shloka Line:" />
+                <p:inputText value="#{editExsistingShloka.shlokaLine}" required="true" />
+                
+                <h:outputText value="Shloka Text:" />
+                <p:inputText value="#{editExsistingShloka.shlokaText}" required="true" />
+
+                <h:outputText value="Shloka ending tag:" />
+                <p:selectOneButton value="#{editExsistingShloka.endChar}">
+                    <f:selectItem itemLabel="|" itemValue="|" />
+                    <f:selectItem itemLabel="||" itemValue="||" />
+                </p:selectOneButton>
+
+                <p:outputLabel for="selectoneubacha" value="Select Ubacha:" />
+                <p:selectOneMenu id="selectoneubacha" value="#{editExsistingShloka.selectedUbachaId}" required="true">
+                    <f:selectItems value="#{editExsistingShloka.ubachaListMap}" />
+                </p:selectOneMenu>
+            </p:panelGrid>
+
+            <div class="card">
+                <p:commandButton value="Update" action="#{editExsistingShloka.updateShloka()}" update="@form"></p:commandButton>
+                <p:commandButton value="Back" action="#{editExsistingShloka.previousPage()}"></p:commandButton>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
